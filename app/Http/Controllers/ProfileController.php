@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Tweet;
+use App\User;
+use App\Follower;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -23,6 +27,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data= User::with('tweets','followers')->get();
+
+
+
+        
+
+
+
+        return view('profile',[
+            'tweets' => $data
+        ]);
     }
 }

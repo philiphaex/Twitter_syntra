@@ -36,9 +36,10 @@ class User extends Authenticatable
 
     public function followers()
     {
-        return $this->hasMany(Follower::class)
-            ->withPivot('user_id','follower_id')
-            ->withTimestamps;
+        return $this->hasMany(Follower::class);
+
+        /*->withPivot('user_id','follower_id')
+        ->withTimestamps*/
     }
     
 }
