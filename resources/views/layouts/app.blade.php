@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
 
     <!-- Scripts -->
     <script>
@@ -43,7 +45,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li><a href="{{route('index')}}"> <i class="fa fa-home" aria-hidden="true"></i> All Tweets</a></li>
+                        <li><a href="{{route('profile')}}"> <i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
