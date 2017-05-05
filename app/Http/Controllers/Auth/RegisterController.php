@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\ProfileController;
 use App\User;
 use App\Follower;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/profile';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -78,6 +79,5 @@ class RegisterController extends Controller
         $follower->save();
 
         return $user;
-
     }
 }
