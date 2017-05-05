@@ -6,9 +6,20 @@
             <div class="col-md-3">
                 <div class="panel panel-default">
 
-                    <div class="panel-heading">Profile</div>
+                    <div class="panel-heading">Profile
+                    <div class="pull-right">
+                        @if($unfollowButton)
+                            <a href="{{url('unfollows/'.$username)}}">Unfollow</a>
+                            @else
+                            @if($followButton)
+                                <a href="{{url('follows/'.$username)}}">Follow</a>
+                            @endif
+                        @endif
+                    </div>
+                    </div>
                     <div class="panel-body">
                         {{ $username }}
+
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Tweet;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -28,14 +29,27 @@ class ProfileController extends Controller
     {
         //Username on index is passed to database to check presence.
         //If profile is entered manually. Non-existing profiles give an error
-        $user = DB::table('users')->where('name', $username)->get();
+        $user = User::where('name','=',$username)->firstOrFail();
+        $me = Auth::user();
 
-        if(count($user)>0){
-            $name = $user[0]->name;
-            return view('profile', ['username' => $name]);
+
+        if(($me->id != $user->id)){
+            $showFollow = true;
+            if($me->isFollowing($user)){
+                $showUnfollow = true;
+            }else{
+                $showUnfollow=false;
+            }
+
         }else{
-            return view('errors.404');
+            $showFollow = false;
+            $showUnfollow=false;
+
         }
+
+        return view('profile', ['username' => $user->name, 'followButton' => $showFollow, 'unfollowButton' => $showUnfollow]);
+
+
 
 
     }
