@@ -46,7 +46,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
                         <li><a href="{{route('index')}}"> <i class="fa fa-home" aria-hidden="true"></i> All Tweets</a></li>
-                        <li><a href="{{route('profile')}}"> <i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                        <li><a href="{{url('profile/'.Auth::user()->name)}}"> <i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

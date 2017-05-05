@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tweet;
 use Illuminate\Http\Request;
 
 class TweetController extends Controller
@@ -21,9 +22,24 @@ class TweetController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validator = \Validator::make($request->all(), [
+            'message' => 'required|max:140',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/')
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $tweet = new Tweet;
+        $tweet->message = $request->message;
+        $tweet->user_id = $request->user()->id;
+        $tweet->save();
+
+        return redirect('/');
     }
 
     /**
@@ -34,7 +50,7 @@ class TweetController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Not used
     }
 
     /**

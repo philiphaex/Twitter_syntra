@@ -30,16 +30,14 @@ class User extends Authenticatable
 
     public function tweets()
     {
-        return $this->hasMany(Tweet::class);
+        return $this->belongsToMany(Tweet::class);
 
     }
 
-    public function followers()
+    public function following()
     {
-        return $this->hasMany(Follower::class);
+        return $this->belongsToMany(User::class, 'followers', 'follower_user_id');
 
-        /*->withPivot('user_id','follower_id')
-        ->withTimestamps*/
     }
     
 }

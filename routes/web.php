@@ -14,7 +14,10 @@
 Route::get('/', 'IndexController@index')->name('index');
 
 Auth::routes();
-Route::resource('tweets', 'TweetController');
 
-
-Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('tweets', 'TweetController');
+    Route::get('/profile/{username}', 'ProfileController@show')->name('profile');
+    Route::get('/follows/{username}', 'UserController@follows');
+    Route::get('/unfollows/{username}', 'UserController@unfollows');
+});
