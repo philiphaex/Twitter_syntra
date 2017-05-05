@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        {{--      @if (count($tweets) > 0)
+              @if (count($tweets) > 0)
                   @foreach ($tweets as $tweet)
                       @if((count($tweet->tweets) > 0) and ($tweet->id == 1))
                           {{$tweet}}
@@ -54,6 +54,6 @@
                           </div>
                       @endif
                   @endforeach
-              @endif--}}
+              @endif
     </div>
 @endsection

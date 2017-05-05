@@ -30,7 +30,7 @@ class User extends Authenticatable
 
     public function tweets()
     {
-        return $this->belongsToMany(Tweet::class);
+        return $this->hasMany(Tweet::class);
 
     }
 
