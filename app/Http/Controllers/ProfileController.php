@@ -26,12 +26,17 @@ class ProfileController extends Controller
      */
     public function show($username)
     {
-//        $data= User::with('followers')->get();
+        //Username on index is passed to database to check presence.
+        //If profile is entered manually. Non-existing profiles give an error
+        $user = DB::table('users')->where('name', $username)->get();
 
-//        $data =
+        if(count($user)>0){
+            $name = $user[0]->name;
+            return view('profile', ['username' => $name]);
+        }else{
+            return view('errors.404');
+        }
 
-
-        return view('profile', ['username' => $username]);
 
     }
 }
