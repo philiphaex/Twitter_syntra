@@ -9,16 +9,16 @@
                     <div class="panel-heading">Profile
                     <div class="pull-right">
                         @if($unfollowButton)
-                            <a href="{{url('unfollows/'.$username)}}">Unfollow</a>
+                            <a href="{{url('unfollows/'.$user->name)}}">Unfollow</a>
                             @else
                             @if($followButton)
-                                <a href="{{url('follows/'.$username)}}">Follow</a>
+                                <a href="{{url('follows/'.$user->name)}}">Follow</a>
                             @endif
                         @endif
                     </div>
                     </div>
                     <div class="panel-body">
-                        {{ $username }}
+                        {{ $user->name }}
 
                     </div>
                 </div>
@@ -35,24 +35,24 @@
             </div>
         </div>
 
-              @if (count($tweets) > 0)
-                  @foreach ($tweets as $tweet)
-                      @if((count($tweet->tweets) > 0) and ($tweet->id == 1))
+              @if (count($user->timeline()) > 0)
+                  @foreach ($user->timeline() as $tweet)
+                      {{--@if((count($tweet->tweets) > 0))--}}
                           {{$tweet}}
                           <div class="row">
                               <div class="col-md-6 col-md-offset-3">
                                   <div class="panel panel-default">
                                       <div class="panel-heading">
-                                          <b>Username</b>
-                                          <div class="pull-right">Timestamp</div>
+                                          <b>{{$user->name}}</b>
+                                          <div class="pull-right">{{$tweet->created_at}}</div>
                                       </div>
                                       <div class="panel-body">
-                                          Message
+                                          {{$tweet->message}}
                                       </div>
                                   </div>
                               </div>
                           </div>
-                      @endif
+                      {{--@endif--}}
                   @endforeach
               @endif
     </div>

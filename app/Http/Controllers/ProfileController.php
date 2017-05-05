@@ -47,9 +47,9 @@ class ProfileController extends Controller
 
         }
 
-        
 
-        return view('profile', ['username' => $user->name, 'followButton' => $showFollow, 'unfollowButton' => $showUnfollow]);
+
+        return view('profile', ['user' => $user, 'followButton' => $showFollow, 'unfollowButton' => $showUnfollow]);
 
 
 

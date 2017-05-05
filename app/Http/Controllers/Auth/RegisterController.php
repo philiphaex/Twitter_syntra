@@ -71,12 +71,7 @@ class RegisterController extends Controller
         ]);
 
 
-        $user_id = $user->id;
 
-        $follower = new Follower;
-        $follower->user_id = $user_id;
-        $follower->follower_user_id = $user_id;
-        $follower->save();
 
         return $user;
     }
