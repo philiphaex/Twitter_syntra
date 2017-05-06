@@ -34,10 +34,9 @@
                 </div>
             </div>
         </div>
-{{--              @if (count($user->timeline()) > 0)--}}
-{{--                  @foreach ($user->tweets()->orderBy('created_at', 'desc')->get() as $tweet)--}}
-                      {{--@if((count($tweet->tweets) > 0))--}}
-        @foreach ($user->timeline() as $tweet)
+
+        @if($followButton OR $unfollowButton)
+                  @foreach ($user->tweets()->orderBy('created_at', 'desc')->get() as $tweet)
                           {{$tweet}}
                           <div class="row">
                               <div class="col-md-6 col-md-offset-3">
@@ -53,6 +52,25 @@
                               </div>
                           </div>
         @endforeach
-
+        @else
+                      <?php
+            var_dump($followerTweets)
+        ?>
+        @foreach($followerTweets as $tweet)
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <b>{{$tweet->name}}</b>
+                            <div class="pull-right">{{$tweet->created_at}}</div>
+                        </div>
+                        <div class="panel-body">
+                            {{$tweet->message}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        @endif
     </div>
 @endsection

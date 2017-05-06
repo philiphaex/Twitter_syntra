@@ -49,7 +49,26 @@ class ProfileController extends Controller
 
 
 
-        return view('profile', ['user' => $user, 'followButton' => $showFollow, 'unfollowButton' => $showUnfollow]);
+/*        $query= 'SELECT users.name, tweets.message, tweets.created_at FROM tweets
+                 INNER JOIN users
+                 ON tweets.user_id = users.id
+                 INNER JOIN followers
+                 ON followers.user_id = users.id
+                 WHERE followers.follower_user_id='.$user->id;*/
+
+        $query = 'SELECT tweets.message, tweets.created_at,users.name
+FROM followers
+INNER JOIN tweets ON followers.user_id = tweets.user_id
+INNER JOIN users ON tweets.user_id = users.id
+WHERE followers.follower_user_id = '.$user->id.
+' ORDER BY tweets.created_at DESC';
+
+        $followerTweets = DB::select(DB::Raw($query));
+        if (count($followerTweets)==0){
+            $followerTweets = 'no tweets';
+        }
+
+        return view('profile', ['user' => $user, 'followButton' => $showFollow, 'unfollowButton' => $showUnfollow, 'followerTweets'=>$followerTweets]);
 
 
 
