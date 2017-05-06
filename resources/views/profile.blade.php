@@ -34,10 +34,10 @@
                 </div>
             </div>
         </div>
-
-              @if (count($user->timeline()) > 0)
-                  @foreach ($user->timeline() as $tweet)
+{{--              @if (count($user->timeline()) > 0)--}}
+{{--                  @foreach ($user->tweets()->orderBy('created_at', 'desc')->get() as $tweet)--}}
                       {{--@if((count($tweet->tweets) > 0))--}}
+        @foreach ($user->timeline() as $tweet)
                           {{$tweet}}
                           <div class="row">
                               <div class="col-md-6 col-md-offset-3">
@@ -52,8 +52,7 @@
                                   </div>
                               </div>
                           </div>
-                      {{--@endif--}}
-                  @endforeach
-              @endif
+        @endforeach
+
     </div>
 @endsection

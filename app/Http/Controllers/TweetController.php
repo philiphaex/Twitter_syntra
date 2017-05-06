@@ -39,7 +39,7 @@ class TweetController extends Controller
         $tweet->user_id = $request->user()->id;
         $tweet->save();
 
-        return redirect('/');
+        return redirect('profile/'.$request->user()->name);
     }
 
     /**
