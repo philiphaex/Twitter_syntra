@@ -8,7 +8,7 @@
             @foreach ($tweets as $tweet)
 
                 <div class="row">
-{{--                    {{$tweet}}--}}
+                    {{--                    {{$tweet}}--}}
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -20,11 +20,15 @@
                                 {{--Message--}}
                                 {{$tweet->message}}
                             </div>
+                            <div class="panel-footer clearfix">
+                                {{--Message--}}
+                                <div class="pull-right">dfsq</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-            @else
+        @else
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-default">
@@ -38,7 +42,7 @@
                 </div>
             </div>
 
-            @endif
+        @endif
     </div>
 
 
