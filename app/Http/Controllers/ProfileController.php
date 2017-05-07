@@ -33,6 +33,20 @@ class ProfileController extends Controller
         $me = Auth::user();
 
 
+
+        $query = 'SELECT tweets.message, tweets.created_at,users.name
+                  FROM followers
+                  INNER JOIN tweets ON followers.user_id = tweets.user_id
+                  INNER JOIN users ON tweets.user_id = users.id
+                  WHERE followers.follower_user_id = '.$user->id.
+            ' ORDER BY tweets.created_at DESC';
+
+        $followerTweets = DB::select(DB::Raw($query));
+        if (count($followerTweets)==0){
+            $followerTweets = 0;
+        }
+
+
         if(($me->id != $user->id)){
             $showFollow = true;
             if($me->isFollowing($user)){
@@ -40,11 +54,11 @@ class ProfileController extends Controller
             }else{
                 $showUnfollow=false;
             }
-
+            return view('profile', ['user' => $user, 'followButton' => $showFollow, 'unfollowButton' => $showUnfollow]);
         }else{
             $showFollow = false;
             $showUnfollow=false;
-
+            return view('personal', ['user' => $user, 'followerTweets'=>$followerTweets]);
         }
 
 
@@ -56,19 +70,8 @@ class ProfileController extends Controller
                  ON followers.user_id = users.id
                  WHERE followers.follower_user_id='.$user->id;*/
 
-        $query = 'SELECT tweets.message, tweets.created_at,users.name
-FROM followers
-INNER JOIN tweets ON followers.user_id = tweets.user_id
-INNER JOIN users ON tweets.user_id = users.id
-WHERE followers.follower_user_id = '.$user->id.
-' ORDER BY tweets.created_at DESC';
 
-        $followerTweets = DB::select(DB::Raw($query));
-        if (count($followerTweets)==0){
-            $followerTweets = 'no tweets';
-        }
-
-        return view('profile', ['user' => $user, 'followButton' => $showFollow, 'unfollowButton' => $showUnfollow, 'followerTweets'=>$followerTweets]);
+//        return view('profile', ['user' => $user, 'followButton' => $showFollow, 'unfollowButton' => $showUnfollow, 'followerTweets'=>$followerTweets]);
 
 
 
