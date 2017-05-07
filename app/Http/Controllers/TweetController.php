@@ -95,6 +95,12 @@ class TweetController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Tweet::findOrfail($id)->delete();
+
+        $data= Tweet::orderby('created_at','dsc')->with('user')->get();
+
+        return view('index',[
+            'tweets' => $data,
+        ]);
     }
 }

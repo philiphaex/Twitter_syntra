@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Tweet;
 use App\User;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -15,6 +15,8 @@ class IndexController extends Controller
 
         $data= Tweet::orderby('created_at','dsc')->with('user')->get();
 
+
+        
         return view('index',[
             'tweets' => $data,
         ]);

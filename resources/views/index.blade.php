@@ -20,10 +20,48 @@
                                 {{--Message--}}
                                 {{$tweet->message}}
                             </div>
-                            <div class="panel-footer clearfix">
-                                {{--Message--}}
-                                <div class="pull-right">dfsq</div>
-                            </div>
+                            @if(!empty(Auth::user()))
+                                @if(  ($tweet->user->name == Auth::user()->name) )
+                                    <div class="panel-footer clearfix">
+                                        <div class="pull-right">
+                                            <div class="row">
+                                                <div class="col-md-1">
+                                                    <button class="btn btn-default">
+                                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="col-md-1 col-md-offset-1">
+                                                    <form action="{{ url('tweets/'.$tweet->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <button type="submit" class="btn btn-default">
+                                                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                        </button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="container">
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                            <form action="{{ url('tweets/'.$tweet->id) }}" method="POST" class="form-group">
+                                                {{ csrf_field() }}
+                                                {{ method_field('PUT') }}
+
+                                                <div class="form-group">
+                                                    <textarea name='message'  class="form-control" rows="3" id="inputMessage" style="resize:none">{{$tweet->message}}</textarea>
+                                                    <input type="hidden" name="id" value="{{$tweet->id}}">
+
+                                                </div>
+                                                <button type="submit" class="btn btn-primary pull-right">Edit</button>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                @endif
+                            @endif
                         </div>
                     </div>
                 </div>
