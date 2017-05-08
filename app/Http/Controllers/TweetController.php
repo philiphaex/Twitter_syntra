@@ -70,9 +70,9 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-        //
+
     }
 
     /**
@@ -82,9 +82,19 @@ class TweetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $id = $request->id;
+        $tweet =  Tweet::find($id);
+        $tweet->message = $request->message;
+
+        $tweet->save();
+
+        $data= Tweet::orderby('created_at','dsc')->with('user')->get();
+
+        return view('index',[
+            'tweets' => $data,
+        ]);
     }
 
     /**

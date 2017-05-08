@@ -8,7 +8,7 @@
             @foreach ($tweets as $tweet)
 
                 <div class="row">
-                    {{--                    {{$tweet}}--}}
+                    {{--{{$tweet}}--}}
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -37,26 +37,27 @@
                                                         <button type="submit" class="btn btn-default">
                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                         </button>
+                                                        </form>
                                                 </div>
                                             </div>
 
                                         </div>
-                                        <div class="container">
 
                                         <div class="row">
-                                            <div class="col-md-4">
-                                            <form action="{{ url('tweets/'.$tweet->id) }}" method="POST" class="form-group">
-                                                {{ csrf_field() }}
-                                                {{ method_field('PUT') }}
+                                            <div class="col-md-8">
+
 
                                                 <div class="form-group">
-                                                    <textarea name='message'  class="form-control" rows="3" id="inputMessage" style="resize:none">{{$tweet->message}}</textarea>
+                                                    <form action="{{ url('tweets/'.$tweet->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('PUT') }}
+                                                        <textarea name='message'  class="form-control" rows="3" id="inputMessage" style="resize:none">{{$tweet->message}}</textarea>
                                                     <input type="hidden" name="id" value="{{$tweet->id}}">
 
+                                                        <button type="submit" class="btn btn-primary pull-right">Edit</button>
+                                                    </form>
+
                                                 </div>
-                                                <button type="submit" class="btn btn-primary pull-right">Edit</button>
-                                            </form>
-                                        </div>
                                         </div>
                                     </div>
                                     </div>
