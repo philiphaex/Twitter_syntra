@@ -28,7 +28,7 @@ class TweetTest extends DuskTestCase
                 ->assertDontSee('Unfollow')
                 ->type('message', $message)
                 ->press('Tweet')
-                ->waitForText($message)
+                ->waitForText($message);
 
         });
     }
