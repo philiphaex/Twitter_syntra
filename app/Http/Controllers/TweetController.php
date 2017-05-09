@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tweet;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TweetController extends Controller
 {
@@ -39,7 +40,13 @@ class TweetController extends Controller
         $tweet->user_id = $request->user()->id;
         $tweet->save();
 
-        return redirect('profile/'.$request->user()->name);
+        $data= Tweet::orderby('created_at','dsc')->with('user')->get();
+
+        return view('index',[
+            'tweets' => $data,
+        ]);
+
+//        return redirect('profile/'.$request->user()->name);
     }
 
     /**
@@ -86,6 +93,8 @@ class TweetController extends Controller
     {
         $id = $request->id;
         $tweet =  Tweet::find($id);
+
+
         $tweet->message = $request->message;
 
         $tweet->save();
@@ -97,20 +106,24 @@ class TweetController extends Controller
         ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        Tweet::findOrfail($id)->delete();
 
-        $data= Tweet::orderby('created_at','dsc')->with('user')->get();
 
-        return view('index',[
-            'tweets' => $data,
-        ]);
-    }
+/**
+ * Remove the specified resource from storage.
+ *
+ * @param  int  $id
+ * @return \Illuminate\Http\Response
+ */
+public function destroy($id)
+{
+    Tweet::findOrfail($id)->delete();
+
+    $data= Tweet::orderby('created_at','dsc')->with('user')->get();
+
+    return view('index',[
+        'tweets' => $data,
+    ]);
+}
+
+
 }

@@ -20,4 +20,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile/{username}', 'ProfileController@show')->name('profile');
     Route::get('/follows/{username}', 'UserController@follows');
     Route::get('/unfollows/{username}', 'UserController@unfollows');
+
+    Route::get('tweets/{tweet}', function(){
+        return view('errors.404');
+    });
+
 });
