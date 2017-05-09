@@ -33,7 +33,7 @@
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <b>{{$tweet->name}}</b>
+                            <a href="{{url('profile/'.$tweet->name)}}"><strong>{{$tweet->name}}</strong></a>
                             <div class="pull-right">{{$tweet->created_at}}</div>
                         </div>
                         <div class="panel-body">
