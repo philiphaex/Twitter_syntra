@@ -34,7 +34,7 @@
                                                     <form action="{{ url('tweets/'.$tweet->id) }}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-default">
+                                                        <button type="submit" class="btn btn-default" id="deleteButton">
                                                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                                                         </button>
                                                     </form>
