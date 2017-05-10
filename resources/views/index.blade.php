@@ -4,20 +4,20 @@
     <div class="container">
 
 
-        @if (count($tweets) > 0)
+       {{-- @if (count($tweets) > 0)
             @foreach ($tweets as $tweet)
 
                 <div class="row">
-                    {{--{{$tweet}}--}}
+                    --}}{{--{{$tweet}}--}}{{--
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                {{--User--}}
+                                --}}{{--User--}}{{--
                                 <a href="{{url('profile/'.$tweet->user->name)}}"><strong>{{$tweet->user->name}}</strong></a>
-                                <div class="pull-right"> {{--Timestamp--}}{{$tweet->created_at}}</div>
+                                <div class="pull-right"> --}}{{--Timestamp--}}{{--{{$tweet->created_at}}</div>
                             </div>
                             <div class="panel-body">
-                                {{--Message--}}
+                                --}}{{--Message--}}{{--
                                 {{$tweet->message}}
                             </div>
                             @if(!empty(Auth::user()))
@@ -65,7 +65,7 @@
                     </div>
                 </div>
             @endforeach
-        @else
+        @else--}}
             <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                     <div class="panel panel-default">
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-        @endif
+        {{--@endif--}}
     </div>
     <script src="{{ asset('js/show.js') }}"></script>
 
