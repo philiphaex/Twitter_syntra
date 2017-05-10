@@ -28,7 +28,7 @@
 
 
 
-    {{-- @foreach($followerTweets as $tweet)
+     @foreach($followerTweets as $tweet)
          <div class="row">
              <div class="col-md-6 col-md-offset-3">
                  <div class="panel panel-default">
@@ -43,5 +43,5 @@
              </div>
          </div>
          @endforeach
- </div>--}}
+ </div>
 @endsection
