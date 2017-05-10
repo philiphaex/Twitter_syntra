@@ -9,7 +9,9 @@
             @foreach (  $tweets as $tweet  )
 
                 <div class="row">
-                    {{$tweet}}
+                    <?php var_dump($tweet)
+                    ?>
+                    {{--
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -63,7 +65,7 @@
                                 @endif
                             @endif
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             @endforeach
         @else
