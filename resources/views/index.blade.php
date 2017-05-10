@@ -4,8 +4,8 @@
     <div class="container">
 
 
-        @if (count($tweets) > 0)
-            @foreach ($tweets as $tweet)
+        @if (  count($tweets) > 0  )
+            @foreach (  $tweets as $tweet  )
 
                 <div class="row">
                     {{$tweet}}
@@ -20,7 +20,7 @@
                                 Message
                                 {{$tweet->message}}
                             </div>
-                            @if(!empty(Auth::user()))
+                            @if(  !empty(Auth::user())  )
                                 @if(  ($tweet->user->name == Auth::user()->name) )
                                     <div class="panel-footer clearfix">
                                         <div class="pull-right">
