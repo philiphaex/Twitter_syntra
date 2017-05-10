@@ -4,7 +4,7 @@
     <div class="container">
 
 
-        @if (  count($tweets) > 0  )
+        @if (count($tweets) > 0 )
             @foreach (  $tweets as $tweet  )
 
                 <div class="row">
@@ -79,7 +79,7 @@
                 </div>
             </div>
 
-        {{--@endif--}}
+        @endif
     </div>
     <script src="{{ asset('js/show.js') }}"></script>
 
