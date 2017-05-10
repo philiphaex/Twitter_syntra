@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-           {{-- <div class="col-md-6 ">
+            <div class="col-md-6 ">
                 <div class="panel panel-default" style="padding: 10px 10px 50px 10px;">
                     <form action="{{ url('tweets/create') }}" method="get">
                         <div class="form-group">
@@ -28,20 +28,20 @@
 
 
 
-        @foreach($followerTweets as $tweet)
-            <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a href="{{url('profile/'.$tweet->name)}}"><strong>{{$tweet->name}}</strong></a>
-                            <div class="pull-right">{{$tweet->created_at}}</div>
-                        </div>
-                        <div class="panel-body">
-                            {{$tweet->message}}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-    </div>--}}
+    {{-- @foreach($followerTweets as $tweet)
+         <div class="row">
+             <div class="col-md-6 col-md-offset-3">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                         <a href="{{url('profile/'.$tweet->name)}}"><strong>{{$tweet->name}}</strong></a>
+                         <div class="pull-right">{{$tweet->created_at}}</div>
+                     </div>
+                     <div class="panel-body">
+                         {{$tweet->message}}
+                     </div>
+                 </div>
+             </div>
+         </div>
+         @endforeach
+ </div>--}}
 @endsection
