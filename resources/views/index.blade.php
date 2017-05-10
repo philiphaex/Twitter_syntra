@@ -9,7 +9,10 @@
             @foreach (  $tweets as $tweet  )
 
                 <div class="row">
-                    <?php var_dump($tweet)
+                    <?php var_dump($tweet);
+                    var_dump($tweet->user);
+                    var_dump($tweet->user->name);
+                        die()
                     ?>
                     {{--
                     <div class="col-md-6 col-md-offset-3">
