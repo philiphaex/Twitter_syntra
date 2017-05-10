@@ -3,9 +3,9 @@
 @section('content')
     <div class="container">
 
-        <?php var_dump($tweets->count())
-        ?>
-        {{--@if (count($tweets) > 0 )
+       {{-- <?php var_dump($tweets->count())
+        ?>--}}
+        @if ($tweets->count() > 0 )
             @foreach (  $tweets as $tweet  )
 
                 <div class="row">
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-        @endif--}}
+        @endif
     </div>
     <script src="{{ asset('js/show.js') }}"></script>
 
