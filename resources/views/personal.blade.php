@@ -27,21 +27,35 @@
         </div>
 
 
-
-     @foreach($followerTweets as $tweet)
-         <div class="row">
-             <div class="col-md-6 col-md-offset-3">
-                 <div class="panel panel-default">
-                     <div class="panel-heading">
-                         <a href="{{url('profile/'.$tweet->name)}}"><strong>{{$tweet->name}}</strong></a>
-                         <div class="pull-right">{{$tweet->created_at}}</div>
-                     </div>
-                     <div class="panel-body">
-                         {{$tweet->message}}
-                     </div>
-                 </div>
-             </div>
-         </div>
-         @endforeach
- </div>
+        @if($followerTweets > 0)
+        @foreach($followerTweets as $tweet)
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <a href="{{url('profile/'.$tweet->name)}}"><strong>{{$tweet->name}}</strong></a>
+                            <div class="pull-right">{{$tweet->created_at}}</div>
+                        </div>
+                        <div class="panel-body">
+                            {{$tweet->message}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+                @else
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Tweets</strong>
+                        </div>
+                        <div class="panel-body">
+                            No followers
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+    </div>
 @endsection
