@@ -3,19 +3,18 @@
 @section('content')
     <div class="container">
 
-       {{-- <?php var_dump($tweets->count())
-        ?>--}}
+        {{-- <?php var_dump($tweets->count())
+         ?>--}}
         @if ($tweets->count() > 0 )
             @foreach (  $tweets as $tweet  )
 
                 <div class="row">
-                    <?php /*var_dump($tweet)*/;
-                    /*var_dump($tweet->user);*/
-                    var_dump($tweet->created_at);
-                    var_dump($tweet->message);
-                        die()
-                    ?>
-                    {{--
+                    {{--    <?php /*var_dump($tweet)*/;
+                        /*var_dump($tweet->user);*/
+                        var_dump($tweet->created_at);
+                        var_dump($tweet->message);
+                        ?>--}}
+
                     <div class="col-md-6 col-md-offset-3">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -69,7 +68,7 @@
                                 @endif
                             @endif
                         </div>
-                    </div>--}}
+                    </div>
                 </div>
             @endforeach
         @else
