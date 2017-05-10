@@ -26,7 +26,9 @@
             </div>
         </div>
 
-
+    @php
+    var_dump($follower_tweets);
+    @endphp
 
      @foreach($followerTweets as $tweet)
          <div class="row">
