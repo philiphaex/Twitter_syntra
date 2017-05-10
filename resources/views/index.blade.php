@@ -9,9 +9,10 @@
             @foreach (  $tweets as $tweet  )
 
                 <div class="row">
-                    <?php var_dump($tweet);
-                    var_dump($tweet->user);
-                    var_dump($tweet->user->name);
+                    <?php /*var_dump($tweet)*/;
+                    /*var_dump($tweet->user);*/
+                    var_dump($tweet->created_at);
+                    var_dump($tweet->message);
                         die()
                     ?>
                     {{--
