@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 ">
+           {{-- <div class="col-md-6 ">
                 <div class="panel panel-default" style="padding: 10px 10px 50px 10px;">
                     <form action="{{ url('tweets/create') }}" method="get">
                         <div class="form-group">
@@ -43,5 +43,5 @@
                 </div>
             </div>
             @endforeach
-    </div>
+    </div>--}}
 @endsection
