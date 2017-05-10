@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
 
-        <?php var_dump($tweets)
+        <?php var_dump($tweets->count())
         ?>
         {{--@if (count($tweets) > 0 )
             @foreach (  $tweets as $tweet  )
